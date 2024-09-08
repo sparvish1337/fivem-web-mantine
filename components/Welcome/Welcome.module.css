@@ -1,0 +1,102 @@
+.maintitle {
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  font-size: rem(50px);
+  font-weight: 900;
+  letter-spacing: rem(-2px);
+
+  @media (max-width: $mantine-breakpoint-md) {
+    font-size: rem(50px);
+  }
+}
+
+.card {
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease;
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: var(--mantine-shadow-md);
+  }
+}
+
+.title {
+  font-family: 'Greycliff CF', var(--mantine-font-family);
+  font-weight: bold;
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100vh; /* Ensures the background covers the full height */
+  overflow: hidden;
+}
+
+.wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('heroBackground.svg') repeat;
+  background-attachment: fixed;
+  background-size: 45%;
+  z-index: -1;
+  animation: scrollBackground 4s linear infinite;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 80%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) -600%, rgba(0, 0, 0, 0) 70%);
+}
+
+.tab {
+  position: relative;
+  border: 2px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-4));
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
+
+  &:first-of-type {
+    border-radius: 5px 0 0 4px;
+
+    @mixin rtl {
+      border-radius: 0 5px 5px 0;
+    }
+  }
+
+  &:last-of-type {
+    border-radius: 0 5px 5px 0;
+
+    @mixin rtl {
+      border-radius: 5px 0 0 4px;
+    }
+  }
+
+  & + & {
+    border-left-width: 0;
+
+    @mixin rtl {
+      border-right-width: 0;
+      border-left-width: 1px;
+    }
+  }
+
+  @mixin hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-5));
+  }
+
+  &[data-active] {
+    z-index: 1;
+    background-color: var(--mantine-color-green-filled);
+    border-color: var(--mantine-color-green-filled);
+    color: var(--mantine-color-white);
+
+    @mixin hover {
+      background-color: var(--mantine-color-green-filled-hover);
+    }
+  }
+}
+
+.card {
+  background-color: var(--mantine-color-body);
+}
+
+.avatar {
+  border: rem(2px) solid var(--mantine-color-body);
+}

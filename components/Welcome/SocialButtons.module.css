@@ -1,0 +1,8 @@
+.discordButton {
+    background-color: #5865f2;
+    color: #fff;
+  
+    @mixin hover {
+      background-color: #525ee0;
+    }
+  }
